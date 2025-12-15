@@ -26,4 +26,31 @@ public class SortingAlgorithms {
             }
         }
     }
+    public static void mergeSort(double[] arr) {
+        if (arr.length <= 1)
+            return;
+        mergeSortHelper(arr, 0, arr.length - 1, new double[arr.length]);
+    }
+
+    private static void mergeSortHelper(double[] arr, int l, int r, double[] aux) {
+        if (l >= r)
+            return;
+        int m = (l + r) / 2;
+        mergeSortHelper(arr, l, m, aux);
+        mergeSortHelper(arr, m + 1, r, aux);
+        merge(arr, l, m, r, aux);
+    }
+
+    private static void merge(double[] arr, int l, int m, int r, double[] aux) {
+        int i = l, j = m + 1, k = l;
+        while (i <= m && j <= r)
+            aux[k++] = (arr[i] <= arr[j]) ? arr[i++] : arr[j++];
+        while (i <= m)
+            aux[k++] = arr[i++];
+        while (j <= r)
+            aux[k++] = arr[j++];
+        for (k = l; k <= r; k++)
+            arr[k] = aux[k];
+    }
+
 }
