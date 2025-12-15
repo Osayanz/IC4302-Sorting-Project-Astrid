@@ -1,3 +1,5 @@
+package src;
+
 public class SortRunner {
     public static class Result {
         public final String name;
@@ -22,4 +24,8 @@ public class SortRunner {
     public interface RunnableSort {
         void sort(double[] arr);
     }
+
+    public static void main(String[] args) {
+    javax.swing.SwingUtilities.invokeLater(SortAppGUI::new);
+}
 }

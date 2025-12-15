@@ -1,3 +1,5 @@
+package src;
+
 public class SortingAlgorithms {
 
     public static void insertionSort(double[] arr) {
