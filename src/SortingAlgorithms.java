@@ -26,6 +26,7 @@ public class SortingAlgorithms {
             }
         }
     }
+
     public static void mergeSort(double[] arr) {
         if (arr.length <= 1)
             return;
@@ -51,6 +52,35 @@ public class SortingAlgorithms {
             aux[k++] = arr[j++];
         for (k = l; k <= r; k++)
             arr[k] = aux[k];
+    }
+
+    public static void quickSort(double[] arr) {
+        quickSortHelper(arr, 0, arr.length - 1);
+    }
+
+    private static void quickSortHelper(double[] a, int lo, int hi) {
+        if (lo >= hi)
+            return;
+        int p = partition(a, lo, hi);
+        quickSortHelper(a, lo, p - 1);
+        quickSortHelper(a, p + 1, hi);
+    }
+
+    private static int partition(double[] a, int lo, int hi) {
+        double pivot = a[hi];
+        int i = lo;
+        for (int j = lo; j < hi; j++) {
+            if (a[j] <= pivot) {
+                double tmp = a[i];
+                a[i] = a[j];
+                a[j] = tmp;
+                i++;
+            }
+        }
+        double tmp = a[i];
+        a[i] = a[hi];
+        a[hi] = tmp;
+        return i;
     }
 
 }
